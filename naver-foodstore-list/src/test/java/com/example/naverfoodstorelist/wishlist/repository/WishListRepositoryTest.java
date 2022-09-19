@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-import java.util.Optional;
-
 @SpringBootTest
 public class WishListRepositoryTest {
 
@@ -48,7 +45,7 @@ public class WishListRepositoryTest {
         var saveEntity = wishListRepository.save(expected);
 
         Assertions.assertEquals("update entity", saveEntity.getTitle());
-        Assertions.assertEquals(1, wishListRepository.listAll().size());
+        Assertions.assertEquals(1, wishListRepository.findAll().size());
     }
 
     @Test
@@ -68,7 +65,7 @@ public class WishListRepositoryTest {
         wishListRepository.save(wishList);
         wishListRepository.deleteById(1);
 
-        int count = wishListRepository.listAll().size();
+        int count = wishListRepository.findAll().size();
         Assertions.assertEquals(0, count);
 
     }
@@ -81,7 +78,7 @@ public class WishListRepositoryTest {
         var wishList2 = create();
         wishListRepository.save(wishList2);
 
-        int count = wishListRepository.listAll().size();
+        int count = wishListRepository.findAll().size();
         Assertions.assertEquals(2, count);
 
     }
